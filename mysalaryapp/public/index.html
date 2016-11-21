@@ -17,12 +17,20 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Annualy</th>
+            <th>Annually</th>
             <th>Monthly</th>
             <th>Weekly</th>
             <th>Hourly</th>
           </tr>
         </thead>
+        <tbody>
+          <tr ng-repeat="salary in mysalary">
+            <td>{{salary.annually}}</td>
+            <td>{{salary.monthly}}</td>
+            <td>{{salary.weekly}}</td>
+            <td>{{salary.hourly}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
 
