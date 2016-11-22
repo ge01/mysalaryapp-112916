@@ -24,6 +24,7 @@ app.get('/mysalary', function(req, res){
   db.mysalary.find(function(err, docs){
     // Make sure server received the data from the database
     console.log(docs);
+
     // Sends the data back to the controller
     res.json(docs);
   });
@@ -33,6 +34,12 @@ app.get('/mysalary', function(req, res){
 app.post('/mysalary', function(req, res){
   // Print data it receives from the controller to the command prompt
   console.log(req.body);
+
+  // Insert data from the view to MongoDB
+  db.mysalary.insert(req.body, function(err, doc){
+    // Send back data to controller
+    res.json(doc);
+  });
 });
 
 app.listen(3000);

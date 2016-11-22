@@ -17,7 +17,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log($scope.salary);
 
     // Send data from input boxes to server
-    $http.post('/mysalary', $scope.salary);
+    // .success takes response from the server as an argument
+    $http.post('/mysalary', $scope.salary).success(function(response){
+      // Print response from server/MongoDB
+      console.log(response);
+    });
   };
 
 }]);
