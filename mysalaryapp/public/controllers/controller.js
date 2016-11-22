@@ -41,7 +41,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log(id);
 
     // Send delete request to the server
-    $http.delete('/mysalary/' + id);
+    $http.delete('/mysalary/' + id).success(function(response){
+      refresh();
+    });
   };
 
 }]);

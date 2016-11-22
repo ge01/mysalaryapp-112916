@@ -47,6 +47,11 @@ app.delete('/mysalary/:id', function(req, res){
   // Get the value of the ID from the URL
   var id = req.params.id;
   console.log(id);
+  // Delete salary from MongoDB
+  db.mysalary.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
+    // Send back the data being removed to the controller
+    res.json(doc);
+  });
 });
 
 app.listen(3000);
