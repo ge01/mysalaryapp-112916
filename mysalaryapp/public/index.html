@@ -21,9 +21,17 @@
             <th>Monthly</th>
             <th>Weekly</th>
             <th>Hourly</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><input class="form-control" ng-model="salary.annually" /></td>
+            <td><input class="form-control" ng-model="salary.monthly" /></td>
+            <td><input class="form-control" ng-model="salary.weekly" /></td>
+            <td><input class="form-control" ng-model="salary.hourly" /></td>
+            <td><button class="btn btn-primary" ng-click="addSalary()">Add Salary</button></td>
+          </tr>
           <tr ng-repeat="salary in mysalary">
             <td>{{salary.annually}}</td>
             <td>{{salary.monthly}}</td>
