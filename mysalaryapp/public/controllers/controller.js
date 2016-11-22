@@ -11,4 +11,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.mysalary = response;
   });
 
+  // Function that receives data from input boxes in the view
+  $scope.addSalary = function(){
+    // Verify to the view data was received
+    console.log($scope.salary);
+  };
+
 }]);
