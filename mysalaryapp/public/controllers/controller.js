@@ -35,4 +35,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     });
   };
 
+  // Remove function to delet data from DB
+  $scope.remove = function(id){
+    // Print Data ID to view console
+    console.log(id);
+  };
+
 }]);
