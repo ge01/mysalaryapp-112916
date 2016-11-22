@@ -2,35 +2,27 @@
 // Express module
 var express = require('express');
 var app = express();
+// Require the mongojs module
+var mongojs = require('mongojs');
+// Which MongoDB and collection server will be using
+var db = mongojs('mysalary', ['mysalary']);
 
 // Express command to tell the server where to look for (static files) the
 // index.html file (view/template for app)
 app.use(express.static(__dirname + "/public"));
 
-// Respond to the controllers request by sending dummy data
+// Respond to the controllers request by sending data to the controller
 app.get('/mysalary', function(req, res){
   console.log("I received a GET request");
 
-  // Dummy Data
-  salary1 = {
-    annually: "24000",
-    monthly: "2000",
-    weekly: "462",
-    hourly: "11.54"
-  };
-  salary2 = {
-    annually: "34000",
-    monthly: "2833",
-    weekly: "654",
-    hourly: "16.35"
-  };
-
-  // Array with the dummy data objects transfered to the mysalry variable
-  var mysalary = [salary1, salary2];
-
-  // Respond to the Get request by sending back the mysalary data in JSON format
-  // which the controller can use
-  res.json(mysalary);
+  // Have the server find the mysalary database and collection
+  // docs - respond with the salary from the db
+  db.mysalary.find(function(err, docs){
+    // Make sure server received the data from the database
+    console.log(docs);
+    // Sends the data back to the controller
+    res.json(docs);
+  });
 });
 
 app.listen(3000);
