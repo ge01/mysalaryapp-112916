@@ -42,5 +42,12 @@ app.post('/mysalary', function(req, res){
   });
 });
 
+
+app.delete('/mysalary/:id', function(req, res){
+  // Get the value of the ID from the URL
+  var id = req.params.id;
+  console.log(id);
+});
+
 app.listen(3000);
 console.log("Server running on port 3000");
