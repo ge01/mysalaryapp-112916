@@ -15,6 +15,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.addSalary = function(){
     // Verify to the view data was received
     console.log($scope.salary);
+
+    // Send data from input boxes to server
+    $http.post('/mysalary', $scope.salary);
   };
 
 }]);
