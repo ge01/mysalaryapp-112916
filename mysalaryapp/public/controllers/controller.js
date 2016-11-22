@@ -2,14 +2,22 @@ var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
   console.log("Hello World from controller");
 
-  // Route to get dummy data from server.js
-  // Sends a request to the server
-  $http.get('/mysalary').success(function(response){
-    console.log("I got the data I requested");
+  // Refresh the view
+  var refresh = function(){
+    // Route to get dummy data from server.js
+    // Sends a request to the server
+    $http.get('/mysalary').success(function(response){
+      console.log("I got the data I requested");
 
-    // Put the data into index.html
-    $scope.mysalary = response;
-  });
+      // Put the data into index.html
+      $scope.mysalary = response;
+
+      // Clear input boxes after the refresh function is called
+      $scope.salary = "";
+    });
+  };
+
+  refresh();
 
   // Function that receives data from input boxes in the view
   $scope.addSalary = function(){
@@ -21,6 +29,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $http.post('/mysalary', $scope.salary).success(function(response){
       // Print response from server/MongoDB
       console.log(response);
+
+      // Refresh page after add button clicked
+      refresh();
     });
   };
 
