@@ -11,9 +11,54 @@
     <title>My Salary App</title>
   </head>
   <body>
-    <div class="container" ng-controller="AppCtrl">
-      <h1>My Salary App</h1>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#profile-id">CalcJSON</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#profile-id">Home</a></li>
+            <li><a href="#intro-id">My Salary App</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
+    <div class="container" ng-controller="AppCtrl">
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="jumbotron">
+        <h2>Convert my salary to an equivalent hourly wage</h2>
+        <p>Use this calculator to determine what your hourly wage equates to when given your annual salary - it may surprise you what you make on an hourly basis</p>
+      </div>
+      <div class="jumbotron">
+        <h2>Wage Information</h2>
+        Annual Salary
+        <input class="form-control" ng-model="salary.annually" />
+      </div>
+      <button class="btn btn-primary btn-sm btn-block" ng-click="addSalary()">Calculate</button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <h2>Results</h2>
+        <p>{{resultString}}</p>
+      </div>
+      <div>
+        <h1>Below for Testing</h1>
+      </div>
       <table class="table">
         <thead>
           <tr>
@@ -25,19 +70,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><input class="form-control" ng-model="salary.annually" /></td>
-            <td><input class="form-control" ng-model="salary.monthly" /></td>
-            <td><input class="form-control" ng-model="salary.weekly" /></td>
-            <td><input class="form-control" ng-model="salary.hourly" /></td>
-            <td><button class="btn btn-primary" ng-click="addSalary()">Add Salary</button></td>
-          </tr>
           <tr ng-repeat="salary in mysalary">
             <td>{{salary.annually | currency : symbol : fractionSize}}</td>
             <td>{{salary.monthly | currency : symbol : fractionSize}}</td>
             <td>{{salary.weekly | currency : symbol : fractionSize}}</td>
             <td>{{salary.hourly | currency : symbol : fractionSize}}</td>
-            <td><button class="btn btn-danger" ng-click="remove(salary._id)">Remove</button></td>
+            <td><button class="btn btn-danger" ng-click="remove(salary._id)">Delete</button></td>
           </tr>
         </tbody>
       </table>

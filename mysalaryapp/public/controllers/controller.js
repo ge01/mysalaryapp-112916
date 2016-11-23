@@ -18,12 +18,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
   refresh();
 
+
   // Function that receives data from input boxes in the view
   $scope.addSalary = function(){
     // Calculate hourly, weekly, monthly, salary
-    $scope.salary.hourly = parseFloat($scope.salary.annually) / 2080;
-    $scope.salary.weekly = $scope.salary.hourly * 40;
-    $scope.salary.monthly = $scope.salary.weekly * 4.333;
+    $scope.salary.hourly = (parseFloat($scope.salary.annually) / 2080).toFixed(2);
+    $scope.salary.weekly = ($scope.salary.hourly * 40).toFixed(2);
+    $scope.salary.monthly = ($scope.salary.weekly * 4.333).toFixed(2);
+    $scope.resultString = `A salary of ${$scope.salary.annually} equates to a monthly pay of ${$scope.salary.monthly}, weekly pay of ${$scope.salary.weekly}, and an hourly wage of ${$scope.salary.hourly}`;
 
     // Verify to the view data was received
     console.log($scope.salary);
