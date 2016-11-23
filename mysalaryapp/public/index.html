@@ -33,10 +33,10 @@
             <td><button class="btn btn-primary" ng-click="addSalary()">Add Salary</button></td>
           </tr>
           <tr ng-repeat="salary in mysalary">
-            <td>{{salary.annually}}</td>
-            <td>{{salary.monthly}}</td>
-            <td>{{salary.weekly}}</td>
-            <td>{{salary.hourly}}</td>
+            <td>{{salary.annually | currency : symbol : fractionSize}}</td>
+            <td>{{salary.monthly | currency : symbol : fractionSize}}</td>
+            <td>{{salary.weekly | currency : symbol : fractionSize}}</td>
+            <td>{{salary.hourly | currency : symbol : fractionSize}}</td>
             <td><button class="btn btn-danger" ng-click="remove(salary._id)">Remove</button></td>
           </tr>
         </tbody>

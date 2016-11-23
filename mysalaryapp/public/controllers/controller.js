@@ -4,8 +4,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
   // Refresh the view
   var refresh = function(){
-    // Route to get dummy data from server.js
-    // Sends a request to the server
+    // Sends a request to the server for data
     $http.get('/mysalary').success(function(response){
       console.log("I got the data I requested");
 
@@ -21,6 +20,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
   // Function that receives data from input boxes in the view
   $scope.addSalary = function(){
+    // Calculate hourly, weekly, monthly, salary
+    $scope.salary.hourly = parseFloat($scope.salary.annually) / 2080;
+    $scope.salary.weekly = $scope.salary.hourly * 40;
+    $scope.salary.monthly = $scope.salary.weekly * 4.333;
+
     // Verify to the view data was received
     console.log($scope.salary);
 
@@ -35,7 +39,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     });
   };
 
-  // Remove function to delet data from DB
+  // Remove function to delete data from DB
   $scope.remove = function(id){
     // Print Data ID to view console
     console.log(id);
@@ -45,5 +49,4 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
       refresh();
     });
   };
-
 }]);
