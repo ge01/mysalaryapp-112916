@@ -4,10 +4,13 @@ var express = require('express');
 var app = express();
 // Require the mongojs module
 var mongojs = require('mongojs');
+require('dotenv').config();
 // Which MongoDB and collection server will be using
-var db = mongojs('mysalary', ['mysalary']);
+var db = mongojs(process.env.MONGO_URI, ['mysalary']);
 // Allows the server to parse the data incoming from controller
 var bodyParser = require('body-parser');
+
+
 
 
 // Express command to tell the server where to look for (static files) the
